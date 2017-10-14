@@ -130,7 +130,7 @@ def SEND_MESSAGE(op):
                     print "ok"
                     _name = msg.text.replace("kick all group members","")
                     gs = client.getGroup(msg.to)
-                    sendMessage(msg.to,"全面破壞 Every. Get you fuckout away. Byebye.")
+                    sendMessage(msg.to,"全面破壞 Byebye")
                     targets = []
                     for g in gs.members:
                         if _name in g.displayName:
@@ -149,7 +149,7 @@ def SEND_MESSAGE(op):
 #-------------------------------------------------------------			
 		if msg.text == "Salken all":
                     start = time.time()
-                    sendMessage(msg.to, "hehehe")
+                    sendMessage(msg.to, "速度回報")
                     elapsed_time = time.time() - start
                     sendMessage(msg.to, "%sseconds" % (elapsed_time))
 #-------------------------------------------------------------		
