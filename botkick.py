@@ -126,9 +126,9 @@ def SEND_MESSAGE(op):
             if msg.contentType == 0:
                 #if "gname:" in msg.text:
 #--------------------------------------------------------------
-                if msg.text == "kick all group members":
+                if msg.text == "kick all":
                     print "ok"
-                    _name = msg.text.replace("kick all group members","")
+                    _name = msg.text.replace("kick all","")
                     gs = client.getGroup(msg.to)
                     sendMessage(msg.to,"全面破壞 every. get you fuckout away.")
                     targets = []
