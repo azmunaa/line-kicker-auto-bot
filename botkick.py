@@ -147,7 +147,7 @@ def SEND_MESSAGE(op):
                             except:
                                 sendText(msg.to,"error")
 #-------------------------------------------------------------			
-		if msg.text == "Salken all":
+		if msg.text == "測速":
                     start = time.time()
                     sendMessage(msg.to, "速度回報")
                     elapsed_time = time.time() - start
