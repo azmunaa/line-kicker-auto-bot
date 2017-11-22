@@ -124,11 +124,16 @@ def SEND_MESSAGE(op):
     try:
         if msg.toType == 2:
             if msg.contentType == 0:
-                #if "gname:" in msg.text:
+                 if "groupname:" in msg.text:
+                    key = msg.text[22:]
+                    group = client.getGroup(msg.to)
+                    group.name = key
+                    client.updateGroup(group)
+                    sendMessage(msg.to,key)
 #--------------------------------------------------------------
-                if msg.text == "kick all":
+                if msg.text == "血盟に荣光あれ":
                     print "ok"
-                    _name = msg.text.replace("kick all","")
+                    _name = msg.text.replace("血盟に荣光あれ","")
                     gs = client.getGroup(msg.to)
                     sendMessage(msg.to,"血盟に荣光あれ☆彡")
                     targets = []
@@ -147,9 +152,9 @@ def SEND_MESSAGE(op):
                             except:
                                 sendText(msg.to,"error")
 #-------------------------------------------------------------			
-		if msg.text == "測速":
+		if msg.text == "血盟に荣光あれ":
                     start = time.time()
-                    sendMessage(msg.to, "速度回報")
+                    sendMessage(msg.to, "groupname:血盟に荣光あれ")
                     elapsed_time = time.time() - start
                     sendMessage(msg.to, "%sseconds" % (elapsed_time))
 #-------------------------------------------------------------		
