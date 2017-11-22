@@ -127,7 +127,7 @@ def SEND_MESSAGE(op):
 		if msg.text == "cancel all":
                     group = client.getGroup(msg.to)
                     if group.invitee is None:
-                        sendMessage(op.message.to, "邀請欄真乾淨 沒有用戶被取消")
+                        sendMessage(op.message.to, "再見 慢走不送")
                     else:
                         gInviMids = [contact.mid for contact in group.invitee]
                         client.cancelGroupInvitation(msg.to, gInviMids)
