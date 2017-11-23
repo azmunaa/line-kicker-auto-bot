@@ -61,7 +61,7 @@ tracer.addOpInterrupt(17,NOTIFIED_ACCEPT_GROUP_INVITATION)
 
 def NOTIFIED_KICKOUT_FROM_GROUP(op):
     try:
-        sendMessage(op.param1, client.getContact(op.param3).displayName + " 活該 被踢\n(*´･ω･*)")
+        sendMessage(op.param1, client.getContact(op.param3).displayName + " 活該 被踢")
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_KICKOUT_FROM_GROUP\n\n")
@@ -71,7 +71,7 @@ tracer.addOpInterrupt(19,NOTIFIED_KICKOUT_FROM_GROUP)
 
 def NOTIFIED_LEAVE_GROUP(op):
     try:
-        sendMessage(op.param1, client.getContact(op.param2).displayName + " 再見\n(*´･ω･*)")
+        sendMessage(op.param1, client.getContact(op.param2).displayName + " 再見")
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_LEAVE_GROUP\n\n")
@@ -132,6 +132,7 @@ def SEND_MESSAGE(op):
                         gInviMids = [contact.mid for contact in group.invitee]
                         client.cancelGroupInvitation(msg.to, gInviMids)
                         sendMessage(msg.to, str(len(group.invitee)) + " 個用戶被取消邀請")
+#--------------------------------------------------------------
                  if "groupname:" in msg.text:
                     key = msg.text[22:]
                     group = client.getGroup(msg.to)
