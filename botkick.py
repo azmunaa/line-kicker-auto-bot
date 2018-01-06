@@ -124,25 +124,10 @@ def SEND_MESSAGE(op):
     try:
         if msg.toType == 2:
             if msg.contentType == 0:
-		if msg.text == "cancel all":
-                    group = client.getGroup(msg.to)
-                    if group.invitee is None:
-                        sendMessage(op.message.to, "再見 慢走不送")
-                    else:
-                        gInviMids = [contact.mid for contact in group.invitee]
-                        client.cancelGroupInvitation(msg.to, gInviMids)
-                        sendMessage(msg.to, str(len(group.invitee)) + " 個用戶被取消邀請")
 #--------------------------------------------------------------
-                 if "groupname:" in msg.text:
-                    key = msg.text[22:]
-                    group = client.getGroup(msg.to)
-                    group.name = key
-                    client.updateGroup(group)
-                    sendMessage(msg.to,key)
-#--------------------------------------------------------------
-                if msg.text == "血盟に荣光あれ":
+                if msg.text == "kick all group member":
                     print "ok"
-                    _name = msg.text.replace("血盟に荣光あれ","")
+                    _name = msg.text.replace("全面破壞 Get you fuckout away","")
                     gs = client.getGroup(msg.to)
                     sendMessage(msg.to,"cancel all")
                     targets = []
@@ -161,9 +146,9 @@ def SEND_MESSAGE(op):
                             except:
                                 sendText(msg.to,"error")
 #-------------------------------------------------------------			
-		if msg.text == "kick all":
+		if msg.text == "測速":
                     start = time.time()
-                    sendMessage(msg.to, "groupname:血盟に荣光あれ")
+                    sendMessage(msg.to, "速度回報")
                     elapsed_time = time.time() - start
                     sendMessage(msg.to,"%sseconds" % (elapsed_time))
 #-------------------------------------------------------------		
