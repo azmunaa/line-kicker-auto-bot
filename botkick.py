@@ -40,7 +40,7 @@ def sendMessage(to, text, contentMetadata={}, contentType=0):
 
 def NOTIFIED_ADD_CONTACT(op):
     try:
-        sendMessage(op.param1, client.getContact(op.param1).displayName + "感謝加入我為好友")
+        sendMessage(op.param1, client.getContact(op.param1).displayName + "./Terima kasih telah menambahkanku sebagai teman./")
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_ADD_CONTACT\n\n")
@@ -51,7 +51,7 @@ tracer.addOpInterrupt(5,NOTIFIED_ADD_CONTACT)
 def NOTIFIED_ACCEPT_GROUP_INVITATION(op):
     #print op
     try:
-        sendMessage(op.param1, client.getContact(op.param2).displayName + "歡迎加入 " + group.name)
+        sendMessage(op.param1, client.getContact(op.param2).displayName + "./Selamat datang./" + group.name)
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_ACCEPT_GROUP_INVITATION\n\n")
@@ -61,7 +61,7 @@ tracer.addOpInterrupt(17,NOTIFIED_ACCEPT_GROUP_INVITATION)
 
 def NOTIFIED_KICKOUT_FROM_GROUP(op):
     try:
-        sendMessage(op.param1, client.getContact(op.param3).displayName + " 活該 被踢")
+        sendMessage(op.param1, client.getContact(op.param3).displayName + "./Tertendang/.")
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_KICKOUT_FROM_GROUP\n\n")
@@ -71,7 +71,7 @@ tracer.addOpInterrupt(19,NOTIFIED_KICKOUT_FROM_GROUP)
 
 def NOTIFIED_LEAVE_GROUP(op):
     try:
-        sendMessage(op.param1, client.getContact(op.param2).displayName + " 再見")
+        sendMessage(op.param1, client.getContact(op.param2).displayName + "./Selamat tinggal/.")
     except Exception as e:
         print e
         print ("\n\nNOTIFIED_LEAVE_GROUP\n\n")
@@ -125,17 +125,17 @@ def SEND_MESSAGE(op):
         if msg.toType == 2:
             if msg.contentType == 0:
 #--------------------------------------------------------------
-                if msg.text == "kick all group member":
+                if msg.text == "./Aktif/.":
                     print "ok"
-                    _name = msg.text.replace("全面破壞 Get you fuckout away","")
+                    _name = msg.text.replace("./Permisi, sedang ada pembersihan../.","")
                     gs = client.getGroup(msg.to)
-                    sendMessage(msg.to,"cancel all")
+                    sendMessage(msg.to,"./Membatalkan semua/.")
                     targets = []
                     for g in gs.members:
                         if _name in g.displayName:
                             targets.append(g.mid)
                     if targets == []:
-                        sendMessage(msg.to,"error")
+                        sendMessage(msg.to,"./Error/.")
                     else:
                         for target in targets:
                             try:
@@ -144,13 +144,13 @@ def SEND_MESSAGE(op):
                                 kicker.kickoutFromGroup(msg.to,[target])
                                 print (msg.to,[g.mid])
                             except:
-                                sendText(msg.to,"error")
+                                sendText(msg.to,"./Error/.")
 #-------------------------------------------------------------			
-		if msg.text == "測速":
+		if msg.text == "./Speed/.":
                     start = time.time()
-                    sendMessage(msg.to, "速度回報")
+                    sendMessage(msg.to, "./Mengukur kecepatan../.")
                     elapsed_time = time.time() - start
-                    sendMessage(msg.to,"%sseconds" % (elapsed_time))
+                    sendMessage(msg.to,"/. %s seconds./" % (elapsed_time))
 #-------------------------------------------------------------		
         else:
             pass
